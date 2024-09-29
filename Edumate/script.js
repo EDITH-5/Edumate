@@ -12,8 +12,11 @@ document.getElementById("toggleButton").addEventListener("click", function() {
     document.getElementById("nav-a-4").classList.toggle("px-1");
     document.getElementById("nav-a-5").classList.toggle("px-3");
     document.getElementById("nav-a-5").classList.toggle("px-1");
+    document.getElementById("nav-a-6").classList.toggle("px-3");
+    document.getElementById("nav-a-6").classList.toggle("px-1");
     document.getElementById("login-btn").classList.toggle("px-3");
     document.getElementById("login-btn").classList.toggle("px-1");
+    document.getElementById("hide-text").classList.toggle("hidetext");
 });
 
 function toggleSidebarClassBasedOnWidth() {
@@ -33,8 +36,11 @@ function toggleSidebarClassBasedOnWidth() {
         document.getElementById("nav-a-4").classList.add("px-1");
         document.getElementById("nav-a-5").classList.remove("px-3");
         document.getElementById("nav-a-5").classList.add("px-1");
+        document.getElementById("nav-a-6").classList.remove("px-3");
+        document.getElementById("nav-a-6").classList.add("px-1");
         document.getElementById("login-btn").classList.remove("px-3");
         document.getElementById("login-btn").classList.add("px-1");
+        document.getElementById("hide-text").classList.add("hidetext");
     } else {
         sidebar.classList.remove('collapsed');
         toggle.classList.add('active');
@@ -46,8 +52,13 @@ function toggleSidebarClassBasedOnWidth() {
         document.getElementById("nav-a-3").classList.remove("px-1");
         document.getElementById("nav-a-4").classList.add("px-3");
         document.getElementById("nav-a-4").classList.remove("px-1");
+        document.getElementById("nav-a-5").classList.add("px-3");
+        document.getElementById("nav-a-5").classList.remove("px-1");
+        document.getElementById("nav-a-6").classList.add("px-3");
+        document.getElementById("nav-a-6").classList.remove("px-1");
         document.getElementById("login-btn").classList.add("px-3");
         document.getElementById("login-btn").classList.remove("px-1");
+        document.getElementById("hide-text").classList.remove("hidetext");
     }
   }
   
