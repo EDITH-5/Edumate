@@ -23,7 +23,9 @@ body{
     background-color: var(--secondary-color);
 }
 
-
+.hidetext{
+    display: none;
+}
 
 .card-custom{
     border: none;
@@ -37,7 +39,7 @@ body{
 
 .icon-img {
     margin-left: 20px;
-    margin-right: 100px;
+    margin-right: 10px;
     width: auto;
     height: 50px;
 }
@@ -169,7 +171,7 @@ body{
 .sidebar.collapsed .nav-link:hover {
     text-decoration: underline;
     transform: scale(1.12); 
-}
+} */
 
 
 /* POPUP CSS */
