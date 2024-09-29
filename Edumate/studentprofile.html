@@ -4,89 +4,133 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Assignment Submission & Review</title>
+  <title>Student Profile</title>
   <style>
     h1 {
       text-align: center;
+      margin-bottom: 30px;
+      color: #333;
     }
 
-    .theflex {
+    .card-container {
       display: flex;
-      gap: 35px;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
     }
 
-    .create-assingment {
-      width: 30%;
-    }
-
-    .assign-table {
-      width: 70%;
-    }
-
-    /* Styles for the scrollable attendance table */
-    .scrollable-table-container {
-      height: 300px;
-      /* Set a fixed height */
-      overflow-y: scroll;
-      /* Enable vertical scrolling */
-      overflow-x: hidden;
-      /* Disable horizontal scrolling */
-      scrollbar-width: none;
-      /* For Firefox */
-    }
-
-    /* Hide scrollbar for Chrome, Safari, and Edge */
-    .scrollable-table-container::-webkit-scrollbar {
-      display: none;
-    }
-
-    .input-group {
-      margin-bottom: 15px;
-    }
-
-    label {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    input[type="text"],
-    input[type="date"],
-    select {
-      width: 100%;
-      padding: 8px;
+    .ani {
+      background-color: white;
       border: 1px solid #ddd;
-      border-radius: 4px;
+      border-radius: 10px;
+      padding: 15px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      margin-bottom: 100px;
+        flex: 1 1 calc(25% - 20px); /* 4 cards per row, adjusting for gap */
     }
 
-    .btn {
-      background-color: #CBCAF0;
-      color: white;
+    .ani:hover {
+      transform: scale(1.05);
+    }
+
+    .ani img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 10px;
+    }
+
+    .ani p {
+      margin: 5px 0;
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+/* 
+.modal-content {
+    border-radius: 15px;
+    background-color: var(--primary-color);
+    color: #e9ecef;} */
+
+    .modal-content {
+      /* background-color: black;
+      background-color: white; */
+      padding: 20px;
+      border-radius: 10px;
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+      border-radius: 15px;
+      background-color: black;
+      color: #e9ecef;
+    }
+
+    .student-card{
+      background-color: white;
+    }
+
+
+    .modal-content img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+
+    .modal-content h2 {
+      margin: 10px 0;
+      color: black;
+    }
+
+    .modal-content p {
+      margin: 5px 0;
+      color: black;
+    }
+
+    .close-btn {
       padding: 10px 20px;
+      background-color: black;
+      color:white;
       border: none;
       border-radius: 5px;
       cursor: pointer;
-    }
-
-    .btn:hover {
-      background-color: black;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
       margin-top: 20px;
     }
 
-    th,
-    td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      text-align: center;
+    .close-btn:hover {
+      background-color: #d32f2f;
     }
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+            .ani {
+                flex: 1 1 calc(50% - 20px); /* 2 cards per row on smaller screens */
+                max-width: calc(50% - 20px);
+            }
+        }
 
-    th {
-      background-color: #f2f2f2;
-    }
+        @media (max-width: 480px) {
+            .ani {
+                flex: 1 1 100%; /* 1 card per row on very small screens */
+                max-width: 100%;
+            }
+        }
   </style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -95,6 +139,8 @@
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
+
+
 
 <body>
   <div id="homeContent" class="home-content">
@@ -115,7 +161,7 @@
           </div>
           <nav class="mt-4">
             <a href="index.html" id="nav-a-1"
-              class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link ">
+              class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
                 fill="none">
                 <path
@@ -134,8 +180,8 @@
               <span class="nav-text">DashBoard</span>
             </a>
             <div id="nav-menus" style="display: block;">
-              <a href="studentprofile.html" id="nav-a-3"
-                class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
+              <a href="userprofile.html" id="nav-a-3"
+                class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link active">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
                   fill="none">
                   <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.5" />
@@ -159,7 +205,7 @@
                 <span class="nav-text">attendancereport</span>
               </a>
               <a href="assignment.html" id="nav-a-5"
-                class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link active">
+                class="d-flex align-items-center gap-2 text-light py-2 px-3 rounded nav-link">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000"
                   fill="none">
                   <path d="M8 7L16 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
@@ -205,49 +251,68 @@
               <div class="card shadow card-custom first-card" style="height:650px;">
                 <div class="card-body">
                   <div class="row">
-                    <div class="col-md-12">
-                      <h1>Assignment Submission & Review</h1>
-                      <div class="container theflex">
-                        <div class="create-assignment">
-                          <div class="input-group1">
-                            <label for="assignment-title">Assignment Title:</label>
-                            <input type="text" id="assignment-title" required>
-                          </div>
-                          <div class="input-group1">
-                            <label for="subject">Subject:</label>
-                            <input type="text" id="subject" required>
-                          </div>
-                          <div class="input-group1">
-                            <label for="deadline">Deadline:</label>
-                            <input type="date" id="deadline" required>
-                          </div>
-                          <div class="input-group1">
-                            <label for="submission-type">Submission Type:</label>
-                            <select id="submission-type">
-                              <option value="offline">Offline</option>
-                              <option value="online">Online</option>
-                            </select>
-                          </div>
-                          <button class="btn" id="create-assignment">Create Assignment</button>
-                        </div>
-
-                        <div class="assign-table scrollable-table-container" id="assignment-table"
-                          style="display:none;">
-                          <h2>Students' Submissions</h2>
-                          <table>
-                            <thead>
-                              <tr>
-                                <th>Enrollment Number</th>
-                                <th>Name</th>
-                                <th>File/Check</th>
-                                <th>Grade</th>
-                              </tr>
-                            </thead>
-                            <tbody id="table-body">
-
-                            </tbody>
-                          </table>
-                        </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('John Doe', '001', 'john.doe@example.com', '10th Grade', '90%', '75%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 1"></center>
+                        <p><strong>John Doe</strong></p>
+                        <p>Enrollment No: 001</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('Jane smith', '002', 'janesmith@example.com', '10th Grade', '95%', '60%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 2"></center>
+                        <p><strong>Jane Smith</strong></p>
+                        <p>Enrollment No: 002</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('Jack sparrow', '003', 'jacksparrow@example.com', '10th Grade', '80%', '75%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 3"></center>
+                        <p><strong>Jack sparrow</strong></p>
+                        <p>Enrollment No: 003</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('Joebiden', '004', 'joebiden@example.com', '10th Grade', '70%', '65%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 4"></center>
+                        <p><strong>Joe biden</strong></p>
+                        <p>Enrollment No: 004</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('hardikpandya', '005', 'hardikpandya@example.com', '10th Grade', '86%', '93%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 5"></center>
+                        <p><strong>hardik pandya</strong></p>
+                        <p>Enrollment No: 005</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('viratkohli', '006', 'viratkohli@example.com', '10th Grade', '76%', '85%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 6"></center>
+                        <p><strong>virat kohli</strong></p>
+                        <p>Enrollment No: 006</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('Josbuttler', '007', 'josbuttler@example.com', '10th Grade', '90%', '69%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 7"></center>
+                        <p><strong>Jos buttler</strong></p>
+                        <p>Enrollment No: 007</p>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="student-card ani"
+                        onclick="openModal('rohitsharma', '008', 'rohitsharma@example.com', '10th Grade', '78%', '80%')">
+                        <center><img src="https://via.placeholder.com/100" alt="Student 8"></center>
+                        <p><strong>rohit sharma</strong></p>
+                        <p>Enrollment No: 008</p>
                       </div>
                     </div>
                   </div>
@@ -255,7 +320,6 @@
               </div>
             </div>
           </section>
-
         </main>
       </div>
       <footer class="footer text-muted-foreground py-4 px-3 mt-auto">
@@ -271,55 +335,44 @@
     </div>
   </div>
 
+  <!-- Modal (Pop-up) -->
+  <div id="studentModal" class="modal">
+    <div class="modal-content">
+      <center><img id="modalImg" src="https://via.placeholder.com/150" alt="Student Image"></center>
+      <h2 id="studentName">Student Name</h2>
+      <p><strong>Enrollment No:</strong> <span id="studentEnrollment"></span></p>
+      <p><strong>Email:</strong> <span id="studentEmail"></span></p>
+      <p><strong>Class:</strong> <span id="studentClass"></span></p>
+      <p><strong>Attendance:</strong> <span id="studentAttendance"></span></p>
+      <p><strong>Test Score:</strong> <span id="studentTestScore"></span></p>
+      <button class="close-btn" onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
   <script>
-    const createAssignmentBtn = document.getElementById('create-assignment');
-    const assignmentTable = document.getElementById('assignment-table');
-    const submissionTypeSelect = document.getElementById('submission-type');
-    const tableBody = document.getElementById('table-body');
+    // Function to open the modal and populate data
+    function openModal(name, enrollment, email, studentClass, attendance, testScore) {
+      document.getElementById('studentName').innerText = name;
+      document.getElementById('studentEnrollment').innerText = enrollment;
+      document.getElementById('studentEmail').innerText = email;
+      document.getElementById('studentClass').innerText = studentClass;
+      document.getElementById('studentAttendance').innerText = attendance;
+      document.getElementById('studentTestScore').innerText = testScore;
+      document.getElementById('studentModal').style.display = 'flex';
+    }
 
-    // Function to create assignment and show appropriate submission table
-    createAssignmentBtn.addEventListener('click', function () {
-      const assignmentTitle = document.getElementById('assignment-title').value;
-      const subject = document.getElementById('subject').value;
-      const deadline = document.getElementById('deadline').value;
+    // Function to close the modal
+    function closeModal() {
+      document.getElementById('studentModal').style.display = 'none';
+    }
 
-      if (assignmentTitle && subject && deadline) {
-        assignmentTable.style.display = 'block';
-        const submissionType = submissionTypeSelect.value;
-
-        // Clear existing table rows
-        tableBody.innerHTML = '';
-
-        // Sample data for students (you can fetch this from your database)
-        const students = [
-          { enrollment: '101', name: 'John Doe' },
-          { enrollment: '102', name: 'Jane Smith' },
-          { enrollment: '103', name: 'Mike Johnson' }
-        ];
-
-        students.forEach(student => {
-          const row = document.createElement('tr');
-          if (submissionType === 'offline') {
-            row.innerHTML = `
-                            <td>${student.enrollment}</td>
-                            <td>${student.name}</td>
-                            <td><input type="checkbox" class="checkmark"></td>
-                            <td><input type="text" placeholder="Grade"></td>
-                        `;
-          } else {
-            row.innerHTML = `
-                            <td>${student.enrollment}</td>
-                            <td>${student.name}</td>
-                            <td><button class="btn">View File</button></td>
-                            <td><input type="text" placeholder="Grade"></td>
-                        `;
-          }
-          tableBody.appendChild(row);
-        });
-      } else {
-        alert('Please fill all fields');
+    // Close modal if clicked outside of content
+    window.onclick = function (event) {
+      const modal = document.getElementById('studentModal');
+      if (event.target == modal) {
+        modal.style.display = 'none';
       }
-    });
+    }
   </script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -330,5 +383,4 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
-
 </html>

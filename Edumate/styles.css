@@ -85,6 +85,10 @@ body{
     border-radius: 10px;
 }
 
+.nav-text:hover{
+    color: black;
+}
+
 .active{
     background-color: #ffffff;
 }
