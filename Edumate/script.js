@@ -1,5 +1,4 @@
-
-document.getElementById("toggleButton").addEventListener("click", function() {
+document.getElementById("toggleButton").addEventListener("click", function () {
     this.classList.toggle("active");
     document.getElementById("sidebar").classList.toggle("collapsed");
     document.getElementById("nav-a-1").classList.toggle("px-3");
@@ -22,7 +21,7 @@ document.getElementById("toggleButton").addEventListener("click", function() {
 function toggleSidebarClassBasedOnWidth() {
     const sidebar = document.getElementById('sidebar');
     const toggle = document.getElementById("toggleButton")
-  
+
     if (window.innerWidth < 768) {
         sidebar.classList.add('collapsed');
         toggle.classList.remove('active');
@@ -60,10 +59,10 @@ function toggleSidebarClassBasedOnWidth() {
         document.getElementById("login-btn").classList.remove("px-1");
         document.getElementById("hide-text").classList.remove("hidetext");
     }
-  }
-  
+}
+
 toggleSidebarClassBasedOnWidth();
-  
+
 window.addEventListener('resize', toggleSidebarClassBasedOnWidth);
 
 var myModal = new bootstrap.Modal(document.getElementById('formModal'), {
@@ -71,20 +70,20 @@ var myModal = new bootstrap.Modal(document.getElementById('formModal'), {
     keyboard: false
 });
 
-document.getElementById('flipToRegister').addEventListener('click', function(event) {
+document.getElementById('flipToRegister').addEventListener('click', function (event) {
     event.preventDefault();
     document.querySelector('.flip-card').classList.add('flipped');
 });
 
-document.getElementById('flipToLogin').addEventListener('click', function(event) {
+document.getElementById('flipToLogin').addEventListener('click', function (event) {
     event.preventDefault();
     document.querySelector('.flip-card').classList.remove('flipped');
 });
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     var js_static_authentication = false;
 
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
         event.preventDefault();
         authenticateUser();
     });
@@ -108,7 +107,7 @@ document.addEventListener('DOMContentLoaded', function() {
             closeButton.click();
         }
     }
-    
+
     function callModal() {
         var callButton = document.querySelector('#login-btn[data-bs-toggle="modal"]');
         if (callButton) {
@@ -118,13 +117,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const logoutLink = document.getElementById('nav-a-2');
 
-    logoutLink.addEventListener('click', function(event) {
-        event.preventDefault(); 
+    logoutLink.addEventListener('click', function (event) {
+        event.preventDefault();
 
         const userConfirmed = confirm('Are you sure you want to logout?');
 
         if (userConfirmed) {
-            window.location.href = logoutLink.href; 
+            window.location.href = logoutLink.href;
         }
     });
 
